@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Registration Test" parallel="tests" thread-count="5">
+    <test name="Registration Testing">
+        <classes>
+            <class name="com.tech.product1.registration.test.RegistrationHelper"/>
+        </classes>
+    </test>
+</suite>

@@ -1,14 +1,9 @@
-package com.tech.registration;
+package com.tech.product1.registration.action;
 
-import com.tech.enums.Platform;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RegistrationAppService extends RegistrationAPI {
-
-    public Platform getPlatform() {
-        return Platform.APP;
-    }
+public class RegistrationAppService extends RegistrationAction {
 
     @Override
     public String doRegistration() {
