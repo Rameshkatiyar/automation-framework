@@ -1,26 +1,27 @@
 package com.tech.login;
 
-import com.tech.enums.Platform;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.tech.common.ResolverFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
 @Service
-public class LoginResolver {
-    Map<Platform, LoginAPI> loginKeywordResolverList;
-
-    @Autowired
-    public LoginResolver(List<LoginAPI> resolverList) {
-        loginKeywordResolverList = resolverList.stream()
-                .collect(Collectors.toMap(LoginAPI::getPlatform, Function.identity()));
+public class LoginResolver extends ResolverFactory<LoginAPI> {
+    @Override
+    protected LoginAPI getAPIService() {
+        return new LoginAPIService();
     }
 
-    public Optional<LoginAPI> getResolver(Platform platform) {
-        return Optional.ofNullable(loginKeywordResolverList.get(platform));
+    @Override
+    protected LoginAPI getAppService() {
+        return null;
+    }
+
+    @Override
+    protected LoginAPI getWebService() {
+        return new LoginWebService();
+    }
+
+    @Override
+    protected LoginAPI getBackendService() {
+        return null;
     }
 }

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LoginWebService extends LoginAPI {
-    protected Platform getPlatform() {
+    public Platform getPlatform() {
         return Platform.WEB;
     }
 
