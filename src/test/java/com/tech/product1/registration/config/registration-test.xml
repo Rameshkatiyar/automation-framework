@@ -3,7 +3,7 @@
 <suite name="Registration Test" parallel="tests" thread-count="5">
     <test name="Registration Testing">
         <classes>
-            <class name="com.tech.product1.registration.test.RegistrationHelper"/>
+            <class name="com.tech.product1.registration.test.RegistrationTest"/>
         </classes>
     </test>
 </suite>
