@@ -1,6 +1,7 @@
 package com.tech.common;
 
 import com.tech.Application;
+import com.tech.config.ConfigInitializer;
 import com.tech.config.ConfigProperties;
 import com.tech.enums.Platform;
 import lombok.extern.slf4j.Slf4j;
@@ -8,15 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 
 @Slf4j
-@ContextConfiguration(classes = Application.class)
+@Listeners(PlatformListener.class)
+@ContextConfiguration(classes = Application.class, initializers = ConfigInitializer.class)
 public abstract class AutomateHelper extends AbstractTestNGSpringContextTests {
     @Autowired
     protected ConfigProperties configProperties;
 
-    public final String SMOKE = "SMOKE";
-    public final String ACCEPTANCE = "ACCEPTANCE";
+    public final String API = "API";
+    public final String APP = "APP";
+    public final String WEB = "WEB";
+    public final String BACKEND = "BACKEND";
 
     public Platform platform;
 

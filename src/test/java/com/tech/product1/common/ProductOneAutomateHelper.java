@@ -19,7 +19,11 @@ public class ProductOneAutomateHelper extends AutomateHelper {
 
     @Override
     protected void setInitialConfig() {
-        loginAction = this.loginResolver.getResolver(platform).get();
-        registrationAction = this.registrationResolver.getResolver(platform).get();
+        if (loginResolver.getResolver(platform).isPresent()){
+            loginAction = this.loginResolver.getResolver(platform).get();
+        }
+        if (registrationResolver.getResolver(platform).isPresent()){
+            registrationAction = this.registrationResolver.getResolver(platform).get();
+        }
     }
 }

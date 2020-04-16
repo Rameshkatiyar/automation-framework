@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class RegistrationTest extends ProductOneAutomateHelper {
 
-    @Test(groups = {SMOKE, ACCEPTANCE}, description = "Verify valid user only can register properly.")
+    @Test(groups = {API, APP}, description = "Verify valid user only can register properly.")
     public void test4(){
         //Get Data
         String msg = registrationAction.doRegistration();
@@ -14,12 +14,12 @@ public class RegistrationTest extends ProductOneAutomateHelper {
         Assert.assertEquals(msg, "Registration API.");
     }
 
-    @Test(groups = {SMOKE, ACCEPTANCE}, description = "Verify invalid user or not existing user can not register.")
+    @Test(groups = {API, APP}, description = "Verify invalid user or not existing user can not register.")
     public void test5(){
         System.out.println("Test 5");
     }
 
-    @Test(groups = {ACCEPTANCE}, description = "Verify that the Registration form contains Username, First Name, Last Name, Password.")
+    @Test(description = "Verify that the Registration form contains Username, First Name, Last Name, Password.")
     public void test6(){
         System.out.println("Test 6");
     }

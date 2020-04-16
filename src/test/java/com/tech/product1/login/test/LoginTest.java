@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends ProductOneAutomateHelper {
 
-    @Test(groups = {SMOKE, ACCEPTANCE}, description = "Verify valid user only can login.")
+    @Test(groups = {API, APP}, description = "Verify valid user only can login.")
     public void test1(){
         //Get Data
         int status = loginAction.doLoginAndGetStatus("abc", "zzz");
@@ -15,12 +15,12 @@ public class LoginTest extends ProductOneAutomateHelper {
         Assert.assertEquals(status, 200);
     }
 
-    @Test(groups = {SMOKE, ACCEPTANCE}, description = "Verify invalid user or not existing user can not login.")
+    @Test(groups = {API, APP}, description = "Verify invalid user or not existing user can not login.")
     public void test2(){
         System.out.println("Test 2");
     }
 
-    @Test(groups = {ACCEPTANCE}, description = "Verify that the Registration form contains Username, First Name, Last Name, Password.")
+    @Test(groups = {APP}, description = "Verify that the Registration form contains Username, First Name, Last Name, Password.")
     public void test3(){
         System.out.println("Test 3");
     }
