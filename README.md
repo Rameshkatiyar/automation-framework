@@ -13,3 +13,5 @@
 
 **Support Library:**
 - Lombok
+- Guava
+- Hamcrest
