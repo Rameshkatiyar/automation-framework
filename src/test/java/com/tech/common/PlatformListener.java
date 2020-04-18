@@ -1,32 +1,41 @@
 package com.tech.common;
 
+import com.tech.config.ConfigInitializer;
 import com.tech.config.ConfigProperties;
 import com.tech.enums.Platform;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.SkipException;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
 @Service
-public class PlatformListener implements ITestListener {
+public class PlatformListener extends ConfigProperties implements ITestListener {
 
-    @Autowired
-    private ConfigProperties configProperties;
+    private Platform platformValue;
+
+    public void setPlatformValue(Platform platformValue){
+        this.platformValue = platformValue;
+    }
+
+    public Platform getPlatformValue(){
+        return this.platformValue;
+    }
 
     @Override
     public void onTestStart(ITestResult result){
-        System.out.println("Platform: "+ configProperties);
-        Platform platform = Platform.API;
+        System.out.println("Platform: "+ getPlatform());
+        Platform platform = Platform.WEB;
 
         List<String> listOfGroups = Arrays.asList(result.getMethod().getGroups());
         if (!listOfGroups.contains(platform.toString())){
             result.setStatus(ITestResult.SKIP);//Skipped test based on platform!
-            log.info("Ignoring Test: {}, because this test is not available for the platform: {}", result.getName(), platform);
+            throw new SkipException("Skipping / Ignoring - Script not Ready for platform: "+platform);
         }
     }
 }

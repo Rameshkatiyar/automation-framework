@@ -52,6 +52,19 @@ public class AppiumService {
     }
 
     /**
+     * Quits this driver, closing every associated window.
+     * @return
+     */
+    public boolean teardown() {
+        if (this.driver != null) {
+            this.driver.quit();
+            return true;
+        }
+        log.info("Driver is null. {}", driver);
+        return false;
+    }
+
+    /**
      * DesiredCapability = AboutDevice + AboutApplication
      * @param capabilityNameValueMap
      * @return

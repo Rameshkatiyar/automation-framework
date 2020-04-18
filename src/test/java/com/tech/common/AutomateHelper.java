@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 
@@ -17,6 +18,8 @@ import org.testng.annotations.Listeners;
 public abstract class AutomateHelper extends AbstractTestNGSpringContextTests {
     @Autowired
     protected ConfigProperties configProperties;
+    @Autowired
+    private PlatformListener platformListener;
 
     public final String API = "API";
     public final String APP = "APP";
@@ -26,9 +29,11 @@ public abstract class AutomateHelper extends AbstractTestNGSpringContextTests {
     public Platform platform;
 
     @BeforeClass(alwaysRun = true)
-    public void setConfig() {
+    public void setConfig(ITestContext context) {
+        String value = context.getCurrentXmlTest().getParameter("");
         this.platform = configProperties.getPlatform();
-        log.info("Setting the platform for: {}", platform);
+        log.info("Setting the platform for: {}, {}", platform, platformListener);
+        platformListener.setPlatformValue(this.platform);
         setInitialConfig();
     }
 

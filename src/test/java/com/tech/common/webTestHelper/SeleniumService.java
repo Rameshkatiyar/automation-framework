@@ -1,6 +1,7 @@
 package com.tech.common.webTestHelper;
 
 import com.tech.config.ConfigProperties;
+import com.tech.enums.Environment;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
@@ -26,14 +27,40 @@ public class SeleniumService {
 
     private WebDriver driver;
 
-    public static void main(String[] args) {
-       SeleniumService seleniumService = new SeleniumService();
-        WebDriver webDriver = seleniumService.getLocalWebDriver(BrowserType.CHROME, null);
-        webDriver.get("https://google.com");
+    /**
+     * @param browserType
+     * @param capabilityNameValueMap: Set the "browser_version" in capabilities for local testing. If not it will take default version.
+     * @return
+     */
+    public WebDriver getWebDriver(String browserType, Map<String, String> capabilityNameValueMap){
+        Environment environment = configProperties.getEnvironment();
+        if (environment.equals(Environment.BROWSERSTACK)){
+            return getBrowserStackWebDriver(capabilityNameValueMap);
+        }else {
+            return getLocalWebDriver(browserType);
+        }
     }
 
+    /**
+     * Quits this driver, closing every associated window.
+     * @return
+     */
+    public boolean teardown() {
+        if (this.driver != null) {
+            this.driver.quit();
+            return true;
+        }
+        log.info("Driver is null. {}", driver);
+        return false;
+    }
 
-    public WebDriver getLocalWebDriver(String browserType, Map<String, String> capabilityNameValueMap){
+    /**
+     * By default it will run on latest and proper version of browser. Managed by WebDriverManager.
+     * @param browserType
+     * @return
+     */
+    private WebDriver getLocalWebDriver(String browserType){
+        log.info("Connecting with local webdriver using WebDriverManager.");
         if (browserType.equals(BrowserType.CHROME)){
             WebDriverManager.chromedriver().setup();
             this.driver = new ChromeDriver();
@@ -57,7 +84,7 @@ public class SeleniumService {
      * @param capabilityNameValueMap
      * @return
      */
-    public WebDriver getBrowserStackWebDriver(Map<String, String> capabilityNameValueMap){
+    private WebDriver getBrowserStackWebDriver(Map<String, String> capabilityNameValueMap){
         String url = configProperties.getSeleniumBrowserstackUrl();
         try {
             log.info("Connecting with browser stack webdriver.");

@@ -1,4 +1,4 @@
-package com.tech.product1.login.config;
+package com.tech.product1.login.action;
 
 import com.tech.common.ResolverFactory;
 import com.tech.product1.login.action.LoginAction;

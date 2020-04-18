@@ -10,18 +10,18 @@ public class LoginTest extends ProductOneAutomateHelper {
     public void test1(){
         //Get Data
         int status = loginAction.doLoginAndGetStatus("abc", "zzz");
-
+        System.out.println("executing Login Test 1");
         //Validation
         Assert.assertEquals(status, 200);
     }
 
-    @Test(groups = {API, APP}, description = "Verify invalid user or not existing user can not login.")
+    @Test(groups = {API, APP, WEB}, description = "Verify invalid user or not existing user can not login.")
     public void test2(){
-        System.out.println("Test 2");
+        System.out.println("executing Login Test 2");
     }
 
     @Test(groups = {APP}, description = "Verify that the Registration form contains Username, First Name, Last Name, Password.")
     public void test3(){
-        System.out.println("Test 3");
+        System.out.println("Executing login Test 3");
     }
 }

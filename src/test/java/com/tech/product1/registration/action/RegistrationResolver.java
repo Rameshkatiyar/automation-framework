@@ -1,9 +1,6 @@
-package com.tech.product1.registration.config;
+package com.tech.product1.registration.action;
 
 import com.tech.common.ResolverFactory;
-import com.tech.product1.registration.action.RegistrationAction;
-import com.tech.product1.registration.action.RegistrationApiService;
-import com.tech.product1.registration.action.RegistrationAppService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
