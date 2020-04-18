@@ -12,7 +12,7 @@ public class LoginApiService extends ApiAutomationHelper implements LoginAction 
 
     @Override
     public int doLoginAndGetStatus(String username, String password) {
-        System.out.println("Login through API");
+        System.out.println("Login through SMOKE");
         return 200;
     }
 }

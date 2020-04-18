@@ -10,8 +10,8 @@ import java.util.Map;
 public class RegistrationAppService extends AppAutomationHelper implements RegistrationAction {
 
     public String doRegistration() {
-        System.out.println("Registration APP.");
-        return "Registration APP.";
+        System.out.println("Registration ACCEPTANCE.");
+        return "Registration ACCEPTANCE.";
     }
 
     @Override

@@ -8,7 +8,7 @@ public class RegistrationApiService extends ApiAutomationHelper implements Regis
 
     @Override
     public String doRegistration() {
-        System.out.println("Registration API.");
-        return "Registration API.";
+        System.out.println("Registration SMOKE.");
+        return "Registration SMOKE.";
     }
 }
