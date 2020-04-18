@@ -5,11 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LoginApiService extends LoginAction {
+public class LoginApiService extends ApiAutomationHelper implements LoginAction {
 
     @Autowired
     private ApiAutomationHelper apiAutomationHelper;
 
+    @Override
     public int doLoginAndGetStatus(String username, String password) {
         System.out.println("Login through API");
         return 200;

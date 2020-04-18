@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Slf4j
 @Service
-public class ApiAutomationHelper {
+public abstract class ApiAutomationHelper {
 
     @Autowired
     private RestAssuredService restAssuredService;
