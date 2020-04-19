@@ -1,6 +1,6 @@
 package com.tech.common.appTestHelper;
 
-import com.tech.config.ConfigProperties;
+import com.tech.config.TestConfig;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.remote.MobilePlatform;
@@ -17,14 +17,14 @@ public abstract class AppAutomationHelper {
     @Autowired
     protected AppiumService appiumService;
     @Autowired
-    protected ConfigProperties configProperties;
+    protected TestConfig testConfig;
 
     protected AppiumDriver<MobileElement> driver;
 
     public void connectWithAppiumServer() {
         driver = appiumService.getAppiumDriver(
                 getMobilePlatform(),
-                configProperties.getAppiumServerUrl(),
+                testConfig.getAppiumServerUrl(),
                 getCapabilityNameValueMap()
         );
     }

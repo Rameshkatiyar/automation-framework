@@ -1,4 +1,4 @@
-package com.tech.product1.registration.test;
+package com.tech.product1.tests;
 
 import com.tech.annotations.Platforms;
 import com.tech.product1.common.Product1TestAutomation;

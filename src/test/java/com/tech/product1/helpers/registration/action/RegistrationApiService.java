@@ -1,4 +1,4 @@
-package com.tech.product1.registration.action;
+package com.tech.product1.helpers.registration.action;
 
 import com.tech.common.apiTestHelper.ApiAutomationHelper;
 import org.springframework.stereotype.Service;

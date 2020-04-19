@@ -15,7 +15,7 @@ import org.testng.util.Strings;
 import java.util.Map;
 
 /**
- * Wrapper of RestAssured service.
+ * Wrapper of RestAssured webUtils.
  */
 @Slf4j
 @Service

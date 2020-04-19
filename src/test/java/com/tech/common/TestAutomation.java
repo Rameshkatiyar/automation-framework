@@ -2,7 +2,7 @@ package com.tech.common;
 
 import com.tech.Application;
 import com.tech.config.ConfigInitializer;
-import com.tech.config.ConfigProperties;
+import com.tech.config.TestConfig;
 import com.tech.enums.Platform;
 import com.tech.annotations.Platforms;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ import java.util.List;
 @ContextConfiguration(classes = Application.class, initializers = ConfigInitializer.class)
 public abstract class TestAutomation extends AbstractTestNGSpringContextTests {
     @Autowired
-    protected ConfigProperties configProperties;
+    protected TestConfig testConfig;
 
     public final String SMOKE = "SMOKE";
     public final String ACCEPTANCE = "ACCEPTANCE";
@@ -33,7 +33,7 @@ public abstract class TestAutomation extends AbstractTestNGSpringContextTests {
 
     @BeforeClass(alwaysRun = true)
     public void setConfig() {
-        this.platform = configProperties.getPlatform();
+        this.platform = testConfig.getPlatform();
         log.info("Setting the platform for: {}", platform);
         setInitialConfig();
     }

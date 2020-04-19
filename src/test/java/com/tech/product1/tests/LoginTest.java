@@ -1,4 +1,4 @@
-package com.tech.product1.login.test;
+package com.tech.product1.tests;
 
 import com.tech.enums.Platform;
 import com.tech.product1.common.Product1TestAutomation;
@@ -8,15 +8,14 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends Product1TestAutomation {
 
-    @Platforms({Platform.API, Platform.APP})
-    @Test(groups = {SMOKE, ACCEPTANCE},
-            description = "Verify valid user only can login.")
+    @Platforms({Platform.API, Platform.APP, Platform.WEB})
+    @Test(groups = {SMOKE, ACCEPTANCE}, description = "Verify for invalid username and password, user is not able to login.")
     public void test1(){
-        //Get Data
+        //Get status after login
         int status = loginAction.doLoginAndGetStatus("abc", "zzz");
-        System.out.println("executing Login Test 1");
+
         //Validation
-        Assert.assertEquals(status, 200);
+        Assert.assertEquals(status, 300);
     }
 
     @Platforms({Platform.BACKEND, Platform.API})

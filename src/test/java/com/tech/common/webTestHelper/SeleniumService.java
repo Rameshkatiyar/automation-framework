@@ -1,6 +1,6 @@
 package com.tech.common.webTestHelper;
 
-import com.tech.config.ConfigProperties;
+import com.tech.config.TestConfig;
 import com.tech.enums.Environment;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ import java.util.Map;
 public class SeleniumService {
 
     @Autowired
-    private ConfigProperties configProperties;
+    private TestConfig testConfig;
 
     private WebDriver driver;
 
@@ -33,25 +33,12 @@ public class SeleniumService {
      * @return
      */
     public WebDriver getWebDriver(String browserType, Map<String, String> capabilityNameValueMap){
-        Environment environment = configProperties.getEnvironment();
+        Environment environment = testConfig.getEnvironment();
         if (environment.equals(Environment.BROWSERSTACK)){
             return getBrowserStackWebDriver(capabilityNameValueMap);
         }else {
             return getLocalWebDriver(browserType);
         }
-    }
-
-    /**
-     * Quits this driver, closing every associated window.
-     * @return
-     */
-    public boolean teardown() {
-        if (this.driver != null) {
-            this.driver.quit();
-            return true;
-        }
-        log.info("Driver is null. {}", driver);
-        return false;
     }
 
     /**
@@ -85,7 +72,7 @@ public class SeleniumService {
      * @return
      */
     private WebDriver getBrowserStackWebDriver(Map<String, String> capabilityNameValueMap){
-        String url = configProperties.getSeleniumBrowserstackUrl();
+        String url = testConfig.getSeleniumBrowserstackUrl();
         try {
             log.info("Connecting with browser stack webdriver.");
             this.driver = new RemoteWebDriver(new URL(url), getDesiredCapabilities(capabilityNameValueMap));

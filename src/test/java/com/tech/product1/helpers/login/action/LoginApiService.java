@@ -1,4 +1,4 @@
-package com.tech.product1.login.action;
+package com.tech.product1.helpers.login.action;
 
 import com.tech.common.apiTestHelper.ApiAutomationHelper;
 import org.springframework.beans.factory.annotation.Autowired;

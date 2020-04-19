@@ -1,4 +1,4 @@
-package com.tech.product1.registration.action;
+package com.tech.product1.helpers.registration.action;
 
 public interface RegistrationAction {
     String doRegistration();

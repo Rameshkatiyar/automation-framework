@@ -7,7 +7,7 @@
         </run>
     </groups>
     <suite-files>
-        <suite-file path="product1/registration/registration-test.xml"/>
-        <suite-file path="product1/login/login-test.xml"/>
+        <suite-file path="product1/config/registration-test.xml"/>
+        <suite-file path="product1/config/login-test.xml"/>
     </suite-files>
 </suite>

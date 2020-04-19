@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Data
 @Component
-public class ConfigProperties {
+public class TestConfig {
     @Value("${platform:API}") //Default value of platform = API
     private Platform platform;
 
