@@ -4,8 +4,6 @@ import com.tech.common.ResolverFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class RegistrationResolver extends ResolverFactory<RegistrationAction> {
     @Autowired
@@ -13,24 +11,23 @@ public class RegistrationResolver extends ResolverFactory<RegistrationAction> {
     @Autowired
     private RegistrationApiService registrationApiService;
 
-
     @Override
-    public Optional<RegistrationAction> getAPIService() {
-        return Optional.of(registrationApiService);
+    public RegistrationAction getAPIService() {
+        return registrationApiService;
     }
 
     @Override
-    public Optional<RegistrationAction> getAppService() {
-        return Optional.of(registrationAppService);
+    public RegistrationAction getAppService() {
+        return registrationAppService;
     }
 
     @Override
-    public Optional<RegistrationAction> getWebService() {
-        return Optional.empty();
+    public RegistrationAction getWebService() {
+        return null;
     }
 
     @Override
-    public Optional<RegistrationAction> getBackendService() {
-        return Optional.empty();
+    public RegistrationAction getBackendService() {
+        return null;
     }
 }

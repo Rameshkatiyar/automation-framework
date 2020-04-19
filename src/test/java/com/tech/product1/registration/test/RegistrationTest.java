@@ -1,11 +1,13 @@
 package com.tech.product1.registration.test;
 
-import com.tech.product1.common.ProductOneAutomateHelper;
+import com.tech.annotations.Platforms;
+import com.tech.product1.common.Product1TestAutomation;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class RegistrationTest extends ProductOneAutomateHelper {
+public class RegistrationTest extends Product1TestAutomation {
 
+    @Platforms
     @Test(groups = {SMOKE, ACCEPTANCE}, description = "Verify valid user only can register properly.")
     public void test4(){
         //Get Data

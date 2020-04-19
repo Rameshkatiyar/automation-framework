@@ -1,12 +1,12 @@
 package com.tech.product1.login.test;
 
 import com.tech.enums.Platform;
-import com.tech.product1.common.ProductOneAutomateHelper;
-import com.tech.service.Platforms;
+import com.tech.product1.common.Product1TestAutomation;
+import com.tech.annotations.Platforms;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class LoginTest extends ProductOneAutomateHelper {
+public class LoginTest extends Product1TestAutomation {
 
     @Platforms({Platform.API, Platform.APP})
     @Test(groups = {SMOKE, ACCEPTANCE},

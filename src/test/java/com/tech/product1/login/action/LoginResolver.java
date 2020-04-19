@@ -4,8 +4,6 @@ import com.tech.common.ResolverFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class LoginResolver extends ResolverFactory<LoginAction> {
 
@@ -15,22 +13,22 @@ public class LoginResolver extends ResolverFactory<LoginAction> {
     private LoginWebService loginWebService;
 
     @Override
-    public Optional<LoginAction> getAPIService() {
-        return Optional.of(loginApiService);
+    public LoginAction getAPIService() {
+        return loginApiService;
     }
 
     @Override
-    public Optional<LoginAction> getAppService() {
-        return Optional.empty();
+    public LoginAction getAppService() {
+        return null;
     }
 
     @Override
-    public Optional<LoginAction> getWebService() {
-        return Optional.of(loginWebService);
+    public LoginAction getWebService() {
+        return loginWebService;
     }
 
     @Override
-    public Optional<LoginAction> getBackendService() {
-        return Optional.empty();
+    public LoginAction getBackendService() {
+        return null;
     }
 }

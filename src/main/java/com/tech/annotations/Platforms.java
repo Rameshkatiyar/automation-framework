@@ -1,4 +1,4 @@
-package com.tech.service;
+package com.tech.annotations;
 
 import com.tech.enums.Platform;
 

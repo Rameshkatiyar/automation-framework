@@ -8,13 +8,8 @@ import org.testng.ITestResult;
 public class PlatformListener implements ITestListener {
 
     @Override
-    public void onTestStart(ITestResult result){
-        log.info("Test is started: {}", result.getName());
-    }
-
-    @Override
     public void onTestFailure(ITestResult result){
-        log.error("Test failed because of error: {}", result.getThrowable().getCause());
+        log.error("Test failed because of error: {}", result.getThrowable());
         result.setStatus(ITestResult.FAILURE);
     }
 }
