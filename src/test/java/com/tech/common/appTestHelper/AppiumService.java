@@ -27,7 +27,7 @@ public class AppiumService {
      * @param capabilityNameValueMap
      * @return
      */
-    public AppiumDriver<MobileElement> getAppiumDriver(MobilePlatform mobilePlatform,
+    public AppiumDriver<MobileElement> getAppiumDriver(String mobilePlatform,
                                                        String appiumServerUrl,
                                                        Map<String, String> capabilityNameValueMap){
         Capabilities capabilities = getDesiredCapabilities(capabilityNameValueMap);
@@ -71,10 +71,12 @@ public class AppiumService {
      */
     private DesiredCapabilities getDesiredCapabilities(Map<String, String> capabilityNameValueMap){
         DesiredCapabilities cap = new DesiredCapabilities();
+
         capabilityNameValueMap.keySet().stream()
                 .forEach(
                         key -> cap.setCapability(key, capabilityNameValueMap.get(key))
                 );
+
         return cap;
     }
 }

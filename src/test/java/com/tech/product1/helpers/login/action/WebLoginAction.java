@@ -2,7 +2,7 @@ package com.tech.product1.helpers.login.action;
 
 import com.tech.common.webTestHelper.WebAutomationHelper;
 import com.tech.common.webTestHelper.webUtils.WebWaitService;
-import com.tech.product1.helpers.login.pages.LoginPage;
+import com.tech.product1.helpers.login.pages.WebLoginPage;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.BrowserType;
@@ -14,19 +14,19 @@ import org.springframework.stereotype.Service;
 public class WebLoginAction extends WebAutomationHelper implements LoginAction {
 
     @Autowired
-    private LoginPage loginPage;
+    private WebLoginPage webLoginPage;
 
     public final String LOGIN_URL = "/login";
 
     public int doLoginAndGetStatus(String username, String password) {
         openBrowser(LOGIN_URL);
 
-        loginPage.setUsername(username);
-        loginPage.setPassword(password);
-        loginPage.clickLoginButton();
+        webLoginPage.setUsername(username);
+        webLoginPage.setPassword(password);
+        webLoginPage.clickLoginButton();
 
         WebWaitService.waitForPageLoad(driver);
-        WebElement createNewAccountButton = loginPage.getCreateNewAccountButton();
+        WebElement createNewAccountButton = webLoginPage.getCreateNewAccountButton();
         closeBrowser();
 
         if (createNewAccountButton != null)

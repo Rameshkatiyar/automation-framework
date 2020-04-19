@@ -1,10 +1,7 @@
 package com.tech.product1.helpers.registration.action;
 
 import com.tech.common.appTestHelper.AppAutomationHelper;
-import io.appium.java_client.remote.MobilePlatform;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 @Service
 public class AppRegistrationAction extends AppAutomationHelper implements RegistrationAction {
@@ -15,12 +12,12 @@ public class AppRegistrationAction extends AppAutomationHelper implements Regist
     }
 
     @Override
-    protected MobilePlatform getMobilePlatform() {
-        return null;
+    protected void setMobilePlatform() {
+
     }
 
     @Override
-    protected Map<String, String> getCapabilityNameValueMap() {
-        return null;
+    protected void setCapabilityNameValueMap() {
+
     }
 }

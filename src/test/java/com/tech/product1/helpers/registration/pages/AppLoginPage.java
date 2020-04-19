@@ -1,6 +1,6 @@
-package com.tech.product1.helpers.login.pages;
+package com.tech.product1.helpers.registration.pages;
 
-import com.tech.common.webTestHelper.BaseWebPage;
+import com.tech.common.appTestHelper.BaseAppPage;
 import lombok.Data;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +8,12 @@ import org.springframework.stereotype.Component;
 
 @Data
 @Component
-public class LoginPage extends BaseWebPage {
+public class AppLoginPage extends BaseAppPage {
+    @Override
+    protected Object getCurrentObject() {
+        return this;
+    }
+
     @FindBy(id = "email")
     WebElement emailField;
 
@@ -32,10 +37,5 @@ public class LoginPage extends BaseWebPage {
 
     public void clickLoginButton(){
         loginButton.click();
-    }
-
-    @Override
-    protected Object getCurrentObject() {
-        return this;
     }
 }

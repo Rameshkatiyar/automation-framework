@@ -11,6 +11,8 @@ public class LoginResolver extends ResolverFactory<LoginAction> {
     private ApiLoginAction apiLoginAction;
     @Autowired
     private WebLoginAction webLoginAction;
+    @Autowired
+    private AppLoginAction appLoginAction;
 
     @Override
     public LoginAction getAPIService() {
@@ -19,7 +21,7 @@ public class LoginResolver extends ResolverFactory<LoginAction> {
 
     @Override
     public LoginAction getAppService() {
-        return null;
+        return appLoginAction;
     }
 
     @Override

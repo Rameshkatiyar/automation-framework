@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
@@ -18,19 +19,42 @@ public abstract class AppAutomationHelper {
     protected AppiumService appiumService;
     @Autowired
     protected TestConfig testConfig;
+    @Autowired
+    protected BaseAppPage baseAppPage;
 
     protected AppiumDriver<MobileElement> driver;
+    protected String mobilePlatform = MobilePlatform.ANDROID;
+    protected Map<String, String> capabilityNameValueMap = new HashMap<String, String>(){{
+        //About Device
+        put("deviceName", "OnePlus 6");
+        put("udid", "497f66d4");
+        put("platformName", "Android");
+        put("platformVersion", "10");
 
-    public void connectWithAppiumServer() {
-        driver = appiumService.getAppiumDriver(
-                getMobilePlatform(),
+        //About Application
+        put("appPackage", "com.oneplus.calculator");
+        put("appActivity", "com.oneplus.calculator.Calculator");
+    }};
+
+    public void openApp() {
+        setMobilePlatform();
+        setCapabilityNameValueMap();
+
+        this.driver = appiumService.getAppiumDriver(
+                mobilePlatform,
                 testConfig.getAppiumServerUrl(),
-                getCapabilityNameValueMap()
+                capabilityNameValueMap
         );
+
+        baseAppPage.setDriver(driver);
     }
 
-    protected abstract MobilePlatform getMobilePlatform();
-    protected abstract Map<String, String> getCapabilityNameValueMap();
+    public void closeApp(){
+
+    }
+
+    protected abstract void setMobilePlatform();
+    protected abstract void setCapabilityNameValueMap();
 
 
 }

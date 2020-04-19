@@ -39,6 +39,7 @@ public abstract class WebAutomationHelper {
     public void openBrowser(String url){
         setBaseUrl();
         setBrowserAndCapabilities();
+
         this.driver = seleniumService.getWebDriver(browserType, capabilityNameValueMap);
         this.driver.get(baseURI.concat(url));
 
