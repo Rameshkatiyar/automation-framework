@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class LoginWebService extends WebAutomationHelper implements LoginAction {
+public class WebLoginAction extends WebAutomationHelper implements LoginAction {
 
     @Autowired
     private LoginPage loginPage;

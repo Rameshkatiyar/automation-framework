@@ -7,18 +7,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class RegistrationResolver extends ResolverFactory<RegistrationAction> {
     @Autowired
-    private RegistrationAppService registrationAppService;
+    private AppRegistrationAction appRegistrationAction;
     @Autowired
-    private RegistrationApiService registrationApiService;
+    private ApiRegistrationAction apiRegistrationAction;
 
     @Override
     public RegistrationAction getAPIService() {
-        return registrationApiService;
+        return apiRegistrationAction;
     }
 
     @Override
     public RegistrationAction getAppService() {
-        return registrationAppService;
+        return appRegistrationAction;
     }
 
     @Override

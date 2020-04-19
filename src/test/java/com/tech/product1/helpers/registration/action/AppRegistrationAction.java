@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 @Service
-public class RegistrationAppService extends AppAutomationHelper implements RegistrationAction {
+public class AppRegistrationAction extends AppAutomationHelper implements RegistrationAction {
 
     public String doRegistration() {
         System.out.println("Registration ACCEPTANCE.");

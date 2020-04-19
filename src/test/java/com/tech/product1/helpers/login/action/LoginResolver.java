@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 public class LoginResolver extends ResolverFactory<LoginAction> {
 
     @Autowired
-    private LoginApiService loginApiService;
+    private ApiLoginAction apiLoginAction;
     @Autowired
-    private LoginWebService loginWebService;
+    private WebLoginAction webLoginAction;
 
     @Override
     public LoginAction getAPIService() {
-        return loginApiService;
+        return apiLoginAction;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class LoginResolver extends ResolverFactory<LoginAction> {
 
     @Override
     public LoginAction getWebService() {
-        return loginWebService;
+        return webLoginAction;
     }
 
     @Override
