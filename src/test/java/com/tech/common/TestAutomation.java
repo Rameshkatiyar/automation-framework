@@ -24,6 +24,8 @@ import java.util.List;
 public abstract class TestAutomation extends AbstractTestNGSpringContextTests {
     @Autowired
     protected TestConfig testConfig;
+    @Autowired
+    protected TestActionResolver testActionResolver;
 
     public final String SMOKE = "SMOKE";
     public final String ACCEPTANCE = "ACCEPTANCE";

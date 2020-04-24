@@ -1,6 +1,7 @@
 package com.tech.product1.helpers.login.action;
 
 import com.tech.common.appTestHelper.AppAutomationHelper;
+import com.tech.enums.Platform;
 import io.appium.java_client.remote.MobilePlatform;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,10 @@ public class AppLoginAction extends AppAutomationHelper implements LoginAction {
         System.out.println("Starting login on app with calculator.");
         openApp();
         return 200;
+    }
+
+    @Override
+    public Platform getPlatformType() {
+        return Platform.APP;
     }
 }

@@ -2,6 +2,7 @@ package com.tech.product1.helpers.login.action;
 
 import com.tech.common.webTestHelper.WebAutomationHelper;
 import com.tech.common.webTestHelper.webUtils.WebWaitService;
+import com.tech.enums.Platform;
 import com.tech.product1.helpers.login.pages.WebLoginPage;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
@@ -43,5 +44,10 @@ public class WebLoginAction extends WebAutomationHelper implements LoginAction {
     @Override
     public void setBrowserAndCapabilities() {
         browserType = BrowserType.CHROME;
+    }
+
+    @Override
+    public Platform getPlatformType() {
+        return Platform.WEB;
     }
 }
