@@ -1,5 +1,6 @@
 package com.tech.common.apiTestHelper;
 
+import com.tech.config.TestUrlConfig;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import lombok.extern.slf4j.Slf4j;
@@ -13,13 +14,15 @@ public abstract class ApiAutomationHelper {
 
     @Autowired
     private RestAssuredService restAssuredService;
+    @Autowired
+    protected TestUrlConfig testUrlConfig;
 
-    public void setBaseURIAndPath(String baseURI, String basePath){
-        RestAssured.baseURI = baseURI;
-        RestAssured.basePath = basePath;
+    public void setBaseURIAndPath(){
+        RestAssured.baseURI = getBaseURI();
     }
 
     public int getStatus(String url){
+        setBaseURIAndPath();
         Response response = restAssuredService.sendRequestWithBody(
                 url,
                 RequestMethod.GET,
@@ -28,4 +31,17 @@ public abstract class ApiAutomationHelper {
         );
         return response.getStatusCode();
     }
+
+    public Response getResponse(String url){
+        setBaseURIAndPath();
+        Response response = restAssuredService.sendRequestWithBody(
+                url,
+                RequestMethod.GET,
+                null,
+                null
+        );
+        return response;
+    }
+
+    public abstract String getBaseURI();
 }

@@ -6,15 +6,22 @@ import com.tech.annotations.Platforms;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.Map;
+
 public class LoginTest extends Product1TestAutomation {
 
     @Platforms({Platform.API, Platform.APP, Platform.WEB})
     @Test(groups = {SMOKE, ACCEPTANCE}, description = "Verify for invalid username and password, user is not able to login.")
     public void test1(){
-        //Get status after login
-        int status = loginAction.doLoginAndGetStatus("abc", "zzz");
+        //Get Test Data
+        Map<String, String> testdata = getTestData("test1");
+        String username = testdata.get("username");
+        String password = testdata.get("password");
 
-        //Validation
+        //Perform Action
+        int status = loginAction.doLoginAndGetStatus(username, password);
+
+        //Validate Action's Result
         Assert.assertEquals(status, 300);
     }
 

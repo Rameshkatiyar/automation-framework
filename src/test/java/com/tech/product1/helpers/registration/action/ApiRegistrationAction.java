@@ -17,4 +17,9 @@ public class ApiRegistrationAction extends ApiAutomationHelper implements Regist
     public Platform getPlatformType() {
         return Platform.API;
     }
+
+    @Override
+    public String getBaseURI() {
+        return testUrlConfig.getFacebookApiUrl();
+    }
 }

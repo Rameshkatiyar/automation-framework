@@ -9,4 +9,7 @@ import org.springframework.stereotype.Component;
 public class TestUrlConfig {
     @Value("${facebook.web.url}")
     private String facebookWebUrl;
+
+    @Value("${facebook.api.url}")
+    private String facebookApiUrl;
 }

@@ -20,4 +20,10 @@ public class TestConfig {
 
     @Value("${environment:LOCAL}") //Default value of platform = API
     private Environment environment;
+
+    @Value("${test.data.path}")
+    private String testDataPath;
+
+    @Value("${screenshot.path}")
+    private String screenshotPath;
 }

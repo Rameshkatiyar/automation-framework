@@ -80,6 +80,12 @@
             <artifactId>webdrivermanager</artifactId>
             <version>3.8.1</version>
         </dependency>
+        <!-- Univocity Csv Parser -->
+        <dependency>
+            <groupId>com.univocity</groupId>
+            <artifactId>univocity-parsers</artifactId>
+            <version>2.4.1</version>
+        </dependency>
     </dependencies>
 
     <build>

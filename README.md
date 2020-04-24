@@ -16,7 +16,22 @@
 - Guava
 - Hamcrest
 - WebDriverManager
+- Univocity Parsers
 
+## Types of framework:
+- Keyword driven
+- 
+
+## Design Patterns:
+- Page Object Model
+  
+
+## Directory Structure
+
+
+## External Properties
+- Platform Value
+- URL
 
 
 # Theory to know

@@ -1,0 +1,3 @@
+platform	    key 	datamap
+APP	 test1   	{"username":"ramesh", "password":"12345"}
+WEB	test1	{"username":"ramesh", "password":"12345"}

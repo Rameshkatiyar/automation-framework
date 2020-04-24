@@ -1,10 +1,11 @@
 package com.tech.common;
 
 import com.tech.Application;
+import com.tech.annotations.Platforms;
 import com.tech.config.ConfigInitializer;
 import com.tech.config.TestConfig;
 import com.tech.enums.Platform;
-import com.tech.annotations.Platforms;
+import com.tech.service.TestDataService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,6 +18,7 @@ import org.testng.annotations.Listeners;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Listeners(PlatformListener.class)
@@ -26,6 +28,8 @@ public abstract class TestAutomation extends AbstractTestNGSpringContextTests {
     protected TestConfig testConfig;
     @Autowired
     protected TestActionResolver testActionResolver;
+    @Autowired
+    protected TestDataService testDataService;
 
     public final String SMOKE = "SMOKE";
     public final String ACCEPTANCE = "ACCEPTANCE";
@@ -37,7 +41,9 @@ public abstract class TestAutomation extends AbstractTestNGSpringContextTests {
     public void setConfig() {
         this.platform = testConfig.getPlatform();
         log.info("Setting the platform for: {}", platform);
+
         setInitialConfig();
+        testDataService.initializeGenericTestData(platform);
     }
 
     /**
@@ -55,6 +61,10 @@ public abstract class TestAutomation extends AbstractTestNGSpringContextTests {
                 throw new SkipException("Skipping / Ignoring - Script not Ready for platform: "+platform);
             }
         }
+    }
+
+    public Map<String, String> getTestData(String key){
+        return testDataService.getData(platform, key);
     }
 
     protected abstract void setInitialConfig();
