@@ -19,19 +19,98 @@
 - Univocity Parsers
 
 ## Types of framework:
-- Keyword driven
-- 
+- The Hybrid Test Automation Framework
+- The Test Library Architecture Framework
+- The Data-Driven Testing Framework
+- Test Modularity Framework
+- Business Process Testing (BPT)
+
+Link: https://www.guru99.com/test-automation-framework.html
 
 ## Design Patterns:
 - Page Object Model
-  
+- Resolver pattern
+ 
 
 ## Directory Structure
+* properties
+    * config.properties
+    * testUrl.properties
+* testdata
+    * generic_testdata.csv
+* src/main
+    * annotation
+        * PlatformAnnotation
+    * enums
+        * Platform
+        * Environment
+    * services
+        * AbstractCsvReader
+        * TestDataService
+    * utils
+        * JsonUtil
+        * ImageDiffUtil
+    * config
+        * TestUrlConfig
+        * TestPropertiesConfig
+    * dataLoader 
+        * GenerictCsvLoader
+        * GenericCsvModel
+
+* src/test
+    * commonHelper
+        * apiHelper
+            * RestAssuredService
+            * ApiAutomationHelper
+        * appHelper
+            * AppiumService
+            * AppAutomationHelper
+            * BaseAppPage
+            * appUtils (dir)
+                * AppWaitService
+                * AppScreenshotService
+        * webHelper
+            * SeleniumService
+            * WebAutomationHelper
+            * BaseWebPage
+            * webUtils (dir)
+                * WebWaitService
+                * WebScreenshotService
+        * commonAPI
+            * TesAutomation (A)
+            * TestAction (I)
+            * TestActionResolver
+            
+    * Product1
+        * common
+            * Product1TestAutomation
+        * action
+            * LoginAction (I)
+            * ApiLoginAction
+            * AppLoginAction
+            * WebLoginAction
+        * pages
+            * LoginPage
+            * RegistrationPage
+            * LoginApiUrl
+        * test
+            * LoginTest
+            * RegistrationTest
+        * config
+            login.xml
+            registration.xml
+            regression.xml
+    * Product2
+        * common
+        * action
+        * config
+        * pages
+        * test
 
 
 ## External Properties
-- Platform Value
-- URL
+- environment=LOCAL
+- platform=API
 
 
 # Theory to know

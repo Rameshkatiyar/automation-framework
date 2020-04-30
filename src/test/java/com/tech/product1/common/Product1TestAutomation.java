@@ -1,8 +1,8 @@
 package com.tech.product1.common;
 
-import com.tech.common.TestAutomation;
-import com.tech.product1.helpers.login.action.LoginAction;
-import com.tech.product1.helpers.registration.action.RegistrationAction;
+import com.tech.commonHelper.commonApi.TestAutomation;
+import com.tech.product1.action.LoginAction;
+import com.tech.product1.action.RegistrationAction;
 
 public class Product1TestAutomation extends TestAutomation {
 

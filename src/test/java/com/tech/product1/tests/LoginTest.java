@@ -36,4 +36,9 @@ public class LoginTest extends Product1TestAutomation {
     public void test3(){
         System.out.println("Executing login Test 3");
     }
+
+    @Test(groups = {SMOKE}, description = "Verify that the Registration form contains Username, First Name, Last Name, Password.")
+    public void test4(){
+        System.out.println("Executing login Test 4 without any platform.");
+    }
 }
