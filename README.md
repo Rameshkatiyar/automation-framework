@@ -112,6 +112,28 @@ Link: https://www.guru99.com/test-automation-framework.html
 - environment=LOCAL
 - platform=API
 
+## Start automation for new product
+* Design the test cases
+    * Divide the test cases into modules and products.
+    * Marked the common test cases for different platforms like APP, API or WEB.
+* Create a new directory with product name. Example: **myProduct**
+* Create subdirectories: action, common, config, pages, test
+* Inside **common** directory, create a top automation class, **MyProductTestAutomation**
+    * Extend the abstract TestAutomation class and implement setInitialConfig() method.
+    * In this method resolve all ActionResolver.
+* Inside **action** directory, create interface regarding module or page action.
+    * Extend the interface **TestAction**.
+    * Define the methods for common actions with different platforms.
+* Inside **action** directory, implement the action interface for different platform.
+    * Example: AppModule1TestAction
+    * Extend the AppAutomationHelper.
+    * Implement the methods.
+* Inside **pages** directory, define the pages with elements path and url.
+* Inside **test** directory,
+    * Create a test class and extend the MyProductTestAutomation top class for all tests.
+    * Add tests with **@Test** annotation of TestNG.
+    * Add the **@Platform** annotation for mentioning the eligible platform of tests.
+
 
 # Theory to know
 ## WebDriver Manager
