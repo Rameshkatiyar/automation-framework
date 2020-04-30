@@ -26,4 +26,7 @@ public class TestConfig {
 
     @Value("${screenshot.path}")
     private String screenshotPath;
+
+    @Value("${test.group:SMOKE}")
+    private String testGroup;
 }

@@ -17,6 +17,7 @@
 - Hamcrest
 - WebDriverManager
 - Univocity Parsers
+- Extent Report
 
 ## Types of framework:
 - The Hybrid Test Automation Framework

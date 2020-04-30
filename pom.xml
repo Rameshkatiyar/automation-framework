@@ -86,6 +86,12 @@
             <artifactId>univocity-parsers</artifactId>
             <version>2.4.1</version>
         </dependency>
+        <!--Extent Report -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>3.1.5</version>
+        </dependency>
     </dependencies>
 
     <build>

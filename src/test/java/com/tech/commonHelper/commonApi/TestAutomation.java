@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
-@Listeners(PlatformListener.class)
+@Listeners({AlterTestNgXmlListener.class, ExtentReportTestNgListener.class})
 @ContextConfiguration(classes = Application.class, initializers = ConfigInitializer.class)
 public abstract class TestAutomation extends AbstractTestNGSpringContextTests {
     @Autowired
