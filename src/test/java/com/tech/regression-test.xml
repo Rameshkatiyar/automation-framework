@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Regression Test" parallel="tests" thread-count="5">
-    <groups>
-        <run>
-            <include name="SMOKE"/>
-        </run>
-    </groups>
-    <suite-files>
-        <suite-file path="product1/config/registration-test.xml"/>
-        <suite-file path="product1/config/login-test.xml"/>
-    </suite-files>
+    <listeners>
+        <listener class-name="com.tech.commonHelper.commonApi.AlterTestNgXmlListener"/>
+    </listeners>
 </suite>

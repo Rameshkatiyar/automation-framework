@@ -1,10 +1,10 @@
 package com.tech.product1.common;
 
-import com.tech.commonHelper.commonApi.TestAutomation;
+import com.tech.commonHelper.commonApi.BaseAutomation;
 import com.tech.product1.action.LoginAction;
 import com.tech.product1.action.RegistrationAction;
 
-public class Product1TestAutomation extends TestAutomation {
+public class Product1BaseAutomation extends BaseAutomation {
 
     protected LoginAction loginAction;
     protected RegistrationAction registrationAction;

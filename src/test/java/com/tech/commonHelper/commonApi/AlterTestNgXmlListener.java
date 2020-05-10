@@ -1,12 +1,19 @@
 package com.tech.commonHelper.commonApi;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
+import com.tech.annotations.Testable;
 import com.tech.config.TestConfig;
 import lombok.extern.slf4j.Slf4j;
+import org.reflections.Reflections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.testng.IAlterSuiteListener;
+import org.testng.xml.XmlClass;
 import org.testng.xml.XmlSuite;
+import org.testng.xml.XmlTest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -29,16 +36,55 @@ public class AlterTestNgXmlListener implements IAlterSuiteListener {
      */
     @Override
     public void alter(List<XmlSuite> suites) {
-        System.out.println("TestConfig: "+testConfig);
-//        XmlSuite suite = suites.get(0);
-//        XmlTest xmlTest = new XmlTest(suite);
-//        xmlTest.setName("CommandLine_Test");
-//        String packages = System.getProperty("package", suite.getParameter("package"));
-//        XmlPackage xmlPackage = new XmlPackage(packages);
-//        xmlTest.setXmlPackages(Collections.singletonList(xmlPackage));
-//        for(XmlSuite suite:suites) {
-//            suite.addIncludedGroup("bdd_runner");
-//            System.out.println("*****Suit"+ suite.getFileName() + "  Name: "+suite.getName());
-//        }
+        System.out.println("TestConfig::::: "+testConfig);
+        String group = "SMOKE"; //Take from mvn parameters
+        //TODO: Also take the test names as a paremeters and execute only those.
+        testNgXMLSetUp(suites, group);
+    }
+
+    private void testNgXMLSetUp(List<XmlSuite> suites, String group){
+        XmlSuite xmlSuite = new XmlSuite();
+        xmlSuite.setName("Regression");
+        xmlSuite.addIncludedGroup(group);
+
+        Multimap<String, String> testableClasses = findTestableClasses();
+
+        testableClasses.keySet().stream()
+                .forEach(
+                        testName -> {
+                            XmlTest xmlTest = new XmlTest(xmlSuite);
+                            xmlTest.setName(testName);
+                            List<XmlClass> xmlClasses = getXmlClasses(testableClasses, testName);
+                            xmlTest.setXmlClasses(xmlClasses);
+
+                        }
+                );
+
+        suites.add(xmlSuite);
+    }
+
+    private List<XmlClass> getXmlClasses(Multimap<String, String> testableClasses, String testName) {
+        List<XmlClass> xmlClasses = new ArrayList<>();
+        testableClasses.get(testName).stream()
+                .forEach(
+                        testClass -> {
+                            xmlClasses.add(new XmlClass(testClass));
+                        }
+                );
+        return xmlClasses;
+    }
+
+    /**
+     * Used Java Reflection to get the all testable annotated classes info.
+     * @return
+     */
+    private Multimap<String, String> findTestableClasses(){
+        Multimap<String, String> testNameToTestClass = ArrayListMultimap.create();
+        Reflections reflections = new Reflections("com.tech");
+        for (Class<?> cl : reflections.getTypesAnnotatedWith(Testable.class)) {
+            Testable testable = cl.getAnnotation(Testable.class);
+            testNameToTestClass.put(testable.testName(), cl.getName());
+        }
+        return testNameToTestClass;
     }
 }

@@ -12,9 +12,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.ITestResult;
 import org.testng.SkipException;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +22,7 @@ import java.util.Map;
 @Slf4j
 @Listeners({AlterTestNgXmlListener.class, ExtentReportTestNgListener.class})
 @ContextConfiguration(classes = Application.class, initializers = ConfigInitializer.class)
-public abstract class TestAutomation extends AbstractTestNGSpringContextTests {
+public abstract class BaseAutomation extends AbstractTestNGSpringContextTests {
     @Autowired
     protected TestConfig testConfig;
     @Autowired
@@ -36,6 +35,7 @@ public abstract class TestAutomation extends AbstractTestNGSpringContextTests {
     public final String REGRESSION = "REGRESSION";
 
     public Platform platform;
+    public SoftAssert softAssert;
 
     @BeforeClass(alwaysRun = true)
     public void setConfig() {
@@ -44,6 +44,8 @@ public abstract class TestAutomation extends AbstractTestNGSpringContextTests {
 
         setInitialConfig();
         testDataService.initializeGenericTestData(platform);
+
+        this.softAssert=new SoftAssert();
     }
 
     /**

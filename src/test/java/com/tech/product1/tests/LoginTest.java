@@ -1,14 +1,16 @@
 package com.tech.product1.tests;
 
+import com.tech.annotations.Testable;
 import com.tech.enums.Platform;
-import com.tech.product1.common.Product1TestAutomation;
+import com.tech.product1.common.Product1BaseAutomation;
 import com.tech.annotations.Platforms;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.Map;
 
-public class LoginTest extends Product1TestAutomation {
+@Testable(testName = "HomePage")
+public class LoginTest extends Product1BaseAutomation {
 
     @Platforms({Platform.API, Platform.APP, Platform.WEB})
     @Test(groups = {SMOKE, ACCEPTANCE}, description = "Verify for invalid username and password, user is not able to login.")
@@ -29,6 +31,10 @@ public class LoginTest extends Product1TestAutomation {
     @Test(groups = {SMOKE, ACCEPTANCE, REGRESSION}, description = "Verify invalid user or not existing user can not login.")
     public void test2(){
         System.out.println("executing Login Test 2");
+
+        softAssert.assertTrue(false);
+
+        System.out.println("After assertion executing Login Test 2");
     }
 
     @Platforms

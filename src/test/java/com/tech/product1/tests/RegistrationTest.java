@@ -1,11 +1,13 @@
 package com.tech.product1.tests;
 
 import com.tech.annotations.Platforms;
-import com.tech.product1.common.Product1TestAutomation;
+import com.tech.annotations.Testable;
+import com.tech.product1.common.Product1BaseAutomation;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class RegistrationTest extends Product1TestAutomation {
+@Testable(testName = "HomePage")
+public class RegistrationTest extends Product1BaseAutomation {
 
     @Platforms
     @Test(groups = {SMOKE, ACCEPTANCE}, description = "Verify valid user only can register properly.")
