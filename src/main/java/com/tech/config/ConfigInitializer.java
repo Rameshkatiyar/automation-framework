@@ -14,7 +14,12 @@ import java.util.List;
 @Slf4j
 @Configuration
 public class ConfigInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
-    private static final List<String> propertiesFiles = ImmutableList.of("config.properties", "testUrl.properties");
+    private static final List<String> propertiesFiles = ImmutableList.of(
+            "config.properties",
+            "testUrl.properties",
+            "appAutomation.properties",
+            "webAutomation.properties"
+    );
 
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {

@@ -9,11 +9,8 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 public class TestConfig {
-    @Value("${platform:API}") //Default value of platform = API
+    @Value("${platform:APP}") //Default value of platform = API
     private Platform platform;
-
-    @Value("${appium.server.url}")
-    private String appiumServerUrl;
 
     @Value("${selenium.browserstack.url}")
     private String seleniumBrowserstackUrl;

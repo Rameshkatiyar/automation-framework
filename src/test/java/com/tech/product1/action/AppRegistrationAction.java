@@ -13,16 +13,6 @@ public class AppRegistrationAction extends AppAutomationHelper implements Regist
     }
 
     @Override
-    protected void setMobilePlatform() {
-
-    }
-
-    @Override
-    protected void setCapabilityNameValueMap() {
-
-    }
-
-    @Override
     public Platform getPlatformType() {
         return Platform.APP;
     }

@@ -9,14 +9,8 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class AppLoginAction extends AppAutomationHelper implements LoginAction {
-    @Override
     protected void setMobilePlatform() {
         mobilePlatform = MobilePlatform.ANDROID;
-    }
-
-    @Override
-    protected void setCapabilityNameValueMap() {
-
     }
 
     @Override

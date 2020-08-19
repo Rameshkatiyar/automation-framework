@@ -49,6 +49,7 @@ public class ExtentReportTestNgListener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
+        //Taking screenshot
         test.fail(result.getThrowable().toString());
     }
 

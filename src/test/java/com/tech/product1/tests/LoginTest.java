@@ -19,6 +19,8 @@ public class LoginTest extends Product1BaseAutomation {
         Map<String, String> testdata = getTestData("test1");
         String username = testdata.get("username");
         String password = testdata.get("password");
+        String description = testdata.get("description");
+
 
         //Perform Action
         int status = loginAction.doLoginAndGetStatus(username, password);
@@ -30,6 +32,7 @@ public class LoginTest extends Product1BaseAutomation {
     @Platforms({Platform.BACKEND, Platform.API})
     @Test(groups = {SMOKE, ACCEPTANCE, REGRESSION}, description = "Verify invalid user or not existing user can not login.")
     public void test2(){
+        System.out.println("Thread: "+Thread.currentThread().getName());
         System.out.println("executing Login Test 2");
 
         softAssert.assertTrue(false);
@@ -40,11 +43,19 @@ public class LoginTest extends Product1BaseAutomation {
     @Platforms
     @Test(groups = {ACCEPTANCE}, description = "Verify that the Registration form contains Username, First Name, Last Name, Password.")
     public void test3(){
+        System.out.println("Thread: "+Thread.currentThread().getName());
         System.out.println("Executing login Test 3");
     }
 
-    @Test(groups = {SMOKE}, description = "Verify that the Registration form contains Username, First Name, Last Name, Password.")
+    @Test(
+            groups = {SMOKE},
+            description = "Verify that the Registration form contains Username, First Name, Last Name, Password.",
+            threadPoolSize = 3,
+            invocationCount = 6,
+            timeOut = 1000
+    )
     public void test4(){
+        System.out.println("Thread: "+Thread.currentThread().getName());
         System.out.println("Executing login Test 4 without any platform.");
     }
 }

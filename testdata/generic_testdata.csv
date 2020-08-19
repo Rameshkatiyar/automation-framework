@@ -1,3 +1,3 @@
 platform	    key 	datamap
-APP	 test1   	{"username":"ramesh", "password":"12345"}
-WEB	test1	{"username":"ramesh", "password":"12345"}
+APP	 test1   	{"username":"ramesh", "password":"12345", description:"APP login"}
+WEB	test1	{"username":"ramesh", "password":"12345", description:"APP login"}

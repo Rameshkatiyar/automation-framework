@@ -46,6 +46,8 @@ public class AlterTestNgXmlListener implements IAlterSuiteListener {
         XmlSuite xmlSuite = new XmlSuite();
         xmlSuite.setName("Regression");
         xmlSuite.addIncludedGroup(group);
+        xmlSuite.setThreadCount(getParallelThreadCount());
+        xmlSuite.setParallel(XmlSuite.ParallelMode.CLASSES);
 
         Multimap<String, String> testableClasses = findTestableClasses();
 
@@ -86,5 +88,22 @@ public class AlterTestNgXmlListener implements IAlterSuiteListener {
             testNameToTestClass.put(testable.testName(), cl.getName());
         }
         return testNameToTestClass;
+    }
+
+    /**
+     * Its based on current system's cores.
+     * thread count = no. of cores * 1.5
+     * Also it's depend on memory and some research on this.
+     * @return
+     */
+    private static int getParallelThreadCount(){
+        int cores = Runtime.getRuntime().availableProcessors();
+        if (cores == 0){
+            log.error("No free cores are available.");
+            return 1;
+        }
+        int threads = (int) Math.floor(cores * 1.5);
+
+        return threads;
     }
 }

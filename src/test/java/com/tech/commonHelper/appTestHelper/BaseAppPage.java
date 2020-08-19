@@ -13,6 +13,8 @@ public abstract class BaseAppPage {
     public void setDriver(AppiumDriver<MobileElement> driver){
         this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), getCurrentObject());
+
+        this.driver = driver;
     }
 
     protected abstract Object getCurrentObject();

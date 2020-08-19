@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface Platforms {
-    Platform[] value() default Platform.API;
+    Platform[] value() default Platform.APP;
 }

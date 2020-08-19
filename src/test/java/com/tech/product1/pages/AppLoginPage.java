@@ -4,10 +4,12 @@ import com.tech.commonHelper.appTestHelper.BaseAppPage;
 import lombok.Data;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Data
 @Component
+@Scope
 public class AppLoginPage extends BaseAppPage {
     @Override
     protected Object getCurrentObject() {
